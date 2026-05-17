@@ -1,0 +1,8 @@
+{
+  "name": "CakeLoulicious",
+  "description": "Bespoke celebration cakes handcrafted with love by Lou. Warm, personal, and artisan boutique bakery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
