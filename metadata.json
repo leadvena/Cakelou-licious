@@ -1,6 +1,6 @@
 {
   "name": "CakeLoulicious",
-  "description": "Bespoke celebration cakes handcrafted with love by Lou. Warm, personal, and artisan boutique bakery.",
+  "description": "CakeLoulicious: Premium bespoke celebration cakes, wedding cakes, and artisanal treats boxes handcrafted by Lou. Your local source for custom cake designs and luxury dessert boxes.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

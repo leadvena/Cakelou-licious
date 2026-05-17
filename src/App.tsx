@@ -122,7 +122,7 @@ const GALLERY: GalleryImage[] = [
   { id: 5, category: 'Cupcakes', url: 'https://images.unsplash.com/photo-1519869325930-281384150729?q=80&w=1200&auto=format&fit=crop' },
   { id: 6, category: 'Birthday', url: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?q=80&w=1200&auto=format&fit=crop' },
   { id: 7, category: 'Floral', url: 'https://images.unsplash.com/photo-1519340333755-56e9c0d04579?q=80&w=1200&auto=format&fit=crop' },
-  { id: 8, category: 'Wedding', url: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?q=80&w=1200&auto=format&fit=crop' },
+  { id: 8, category: 'Wedding', url: 'https://scontent.fceb6-1.fna.fbcdn.net/v/t39.30808-6/669573121_793315190519385_1599804319185494498_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFG8iAL3oo0zr59MCSEWayZ9ZcG8y5SPcv1lwbzLlI9y4w-vLswT19jJ5DDmOBctyhGXQ_7mO827Kmyhu5FZzMO&_nc_ohc=uYjPanzJbDMQ7kNvwFJwyFy&_nc_oc=Ado5THSzJbd_Zl_ACevnzPuq5JqAv4f5LECDahfUr9821M-DOQV3S5AZ3-zGJP2ME-k&_nc_zt=23&_nc_ht=scontent.fceb6-1.fna&_nc_gid=aQrncw9r471vaTSKar-1_g&_nc_ss=7b2a8&oh=00_Af7xVz409E11DcmuMlwHTDufBCq3yqLlhmLpkdmcRSVSmA&oe=6A0FA7F1' },
   { id: 9, category: 'Celebration', url: 'https://images.unsplash.com/photo-1510103212845-667793d59646?q=80&w=1200&auto=format&fit=crop' },
   { id: 10, category: 'Drip', url: 'https://images.unsplash.com/photo-1505976378723-9726b54e9bb9?q=80&w=1200&auto=format&fit=crop' },
   { id: 11, category: 'Floral', url: 'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=1200&auto=format&fit=crop' },
@@ -364,9 +364,9 @@ export default function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {MENU_ITEMS.map((item) => (
               <FadeIn key={item.id}>
-                <div className="group bg-white rounded-3xl overflow-hidden border border-rose/10 hover:shadow-2xl transition-all h-full flex flex-col">
+                <article className="group bg-white rounded-3xl overflow-hidden border border-rose/10 hover:shadow-2xl transition-all h-full flex flex-col">
                   <div className="aspect-[4/3] overflow-hidden relative">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={item.image} alt={`CakeLoulicious - ${item.title}: ${item.description}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute top-4 left-4">
                       <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-rose">
                         {item.category}
@@ -376,17 +376,18 @@ export default function App() {
                   <div className="p-6 flex-grow flex flex-col">
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="text-xl text-chocolate font-bold">{item.title}</h3>
-                      <span className="text-rose font-bold">£{item.price}</span>
+                      <span className="text-rose font-bold" aria-label={`Price: £${item.price}`}>£{item.price}</span>
                     </div>
                     <p className="text-chocolate/60 text-sm mb-6 flex-grow">{item.description}</p>
                     <button 
                       onClick={() => addToCart(item)}
+                      aria-label={`Add ${item.title} to order`}
                       className="w-full bg-cream text-chocolate py-3 rounded-2xl font-bold hover:bg-rose hover:text-white transition-all flex items-center justify-center gap-2"
                     >
                       Add to Selection
                     </button>
                   </div>
-                </div>
+                </article>
               </FadeIn>
             ))}
           </div>
@@ -444,7 +445,7 @@ export default function App() {
                 <div className="relative">
                   <img 
                     src="https://images.unsplash.com/photo-1535141123063-3bb610931353?q=80&w=1200&auto=format&fit=crop" 
-                    alt="Cake creation" 
+                    alt="Bespoke cake detail handcrafted by Lou at CakeLoulicious" 
                     className="rounded-[3rem] w-full object-cover shadow-2xl rotate-2"
                   />
                   <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border-4 border-cream flex items-center gap-4">
@@ -535,11 +536,13 @@ export default function App() {
               <FadeIn key={img.id} delay={idx * 0.05}>
                 <div 
                   onClick={() => setSelectedImage(img)}
+                  role="button"
+                  aria-label={`View ${img.category} cake design`}
                   className="group relative rounded-3xl overflow-hidden cursor-pointer aspect-square bg-cream shadow-md"
                 >
                   <img 
                     src={img.url} 
-                    alt={img.category} 
+                    alt={`CakeLoulicious Bespoke ${img.category} Cake Design`} 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                   />
                   <div className="absolute inset-0 bg-chocolate/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
